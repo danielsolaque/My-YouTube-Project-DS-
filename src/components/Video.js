@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import YouTube from "react-youtube";
+import "./Video.css";
 
 const Video = () => {
   const { id } = useParams();
-  const [allComment, setAllComment] = useState([]);
+  // const [allComment, setAllComment] = useState([]);
 
   // const localStorageData = localStorage.getItem('comment');
   // let initialData;
@@ -36,8 +37,8 @@ const Video = () => {
   // console.log(allComment);
 
   return (
-    <div>
-      <YouTube videoId={id} />
+    <div className="individual-video">
+      <YouTube videoId={id} className="just-vid" />
 
       {/* <form onSubmit={addComment}>
                 <textarea name="comment" id="" cols="30" rows="10"></textarea>

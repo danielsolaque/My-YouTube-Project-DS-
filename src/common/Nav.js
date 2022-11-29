@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom"
 import "./Nav.css";
+import logo from "../assets/logo.png"
 
 export default function Nav() {
     return (
         <header>
             <article>
-                <h1>
+                <div className="logo">
+                    <img src={logo} alt="logo" />
+                </div>
+                {/* <h1>
                     You<span>Tube</span>
-                </h1>
+                </h1> */}
             </article>
             <nav>
                 <ul>

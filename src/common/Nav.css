@@ -8,9 +8,16 @@ header {
 header article,
 header nav {
     width: 50%;
+    height: 50%;
 }
 
-header h1 {
+img{
+    object-fit: cover;
+    width: 50%;
+    height: 50%;
+}
+
+/* header h1 {
     height: auto;
     margin: 0;
     font-size: 25px;
@@ -23,7 +30,7 @@ header h1 span {
 header h1 a {
     color: white;
     text-decoration: none;
-}
+} */
 
 header ul {
     list-style: none;

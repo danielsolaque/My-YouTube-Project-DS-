@@ -1,0 +1,10 @@
+.video{
+    width: 300px;
+} 
+
+
+.title a{
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}

@@ -1,0 +1,17 @@
+.individual-video{
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 60px;
+    
+    
+}
+
+/* .just-vid{
+    border: 1px solid #e90808;
+    border-radius: 25px;
+    flex-wrap: wrap;
+    
+} */
