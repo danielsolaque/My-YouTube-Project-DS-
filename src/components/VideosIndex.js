@@ -28,7 +28,7 @@ function VideosIndex() {
   const [searchInput, setSearchInput] = useState();
   const [loadingError, setLoadingError] = useState(false);
   // const [filterValue, setFilterValue] = useState("");
-  // const [isSearch, setIsSearch] = useState(false);
+  const [isSearch, setIsSearch] = useState(false);
 
   // useEffect(() => {
   //   // CUANDO NO TENEMOS LA DATA EN EL LOCAL STORAGE
@@ -70,7 +70,7 @@ function VideosIndex() {
   function handleSubmit(e) {
     e.preventDefault();
     const localResults = JSON.parse(window.localStorage.getItem(searchInput));
-
+    setIsSearch(true);
     if (localResults) {
       setItems(localResults);
     } else {
@@ -116,40 +116,48 @@ function VideosIndex() {
 
   return (
     <div className="VideosIndex">
-      <section className="shows-index-wrapper">
+      <section className="videos-index-wrapper">
         <br />
 
         {/* <p>{ items[0].snippet.title }</p> */}
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="">Search Videos:</label>
+        <form className="cont-search" onSubmit={handleSubmit}>
           <input
             id=""
             type="text"
+            placeholder="Search..."
             value={searchInput}
             onChange={handleTextChange}
           />
-          <input type="submit"></input>
+          <button>Search</button>
         </form>
 
-        <section className="shows-index">
-          {loadingError || items.length === 0 ? (
-            <Modal
-              open={loadingError}
-              onClose={() => setLoadingError(false)}
-            ></Modal>
-          ) : (
-            items
-              .filter((video) => {
-                return video.id?.videoId;
-              })
-              .map((video) => (
-                <VideoListing key={video.id?.videoId} video={video} />
-              ))
-          )}
+        {isSearch ? (
+          <section className="shows-videos">
+            {loadingError || items.length === 0 ? (
+              <Modal
+                open={loadingError}
+                onClose={() => setLoadingError(false)}
+              ></Modal>
+            ) : (
+              items
+                .filter((video) => {
+                  return video.id?.videoId;
+                })
+                .map((video) => (
+                  <VideoListing key={video.id?.videoId} video={video} />
+                ))
+            )}
 
-          {/* {items.length ? <YouTube videoId={items[0].id.videoId} opts={YOUTUBE_COMPONENT_OPTIONS} /> : null}  */}
-          {/* reemplazar null por error message? */}
-        </section>
+            {/* {items.length ? <YouTube videoId={items[0].id.videoId} opts={YOUTUBE_COMPONENT_OPTIONS} /> : null}  */}
+            {/* reemplazar null por error message? */}
+          </section>
+        ) : (
+          <div className="no-results">
+            <p className="text">
+              No search results yet! Please submit a search above!
+            </p>
+          </div>
+        )}
       </section>
     </div>
   );
