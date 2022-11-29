@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import YouTube from "react-youtube";
 import "./Video.css";
