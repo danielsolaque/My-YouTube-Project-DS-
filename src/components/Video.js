@@ -1,54 +1,50 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import YouTube from 'react-youtube';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import YouTube from "react-youtube";
 
 const Video = () => {
+  const { id } = useParams();
+  const [allComment, setAllComment] = useState([]);
 
-    const { id } = useParams()
-    const [allComment, setAllComment] = useState([])
+  // const localStorageData = localStorage.getItem('comment');
+  // let initialData;
 
-    // const localStorageData = localStorage.getItem('comment');
-    // let initialData;
- 
-    // if (!localStorageData) {
-    //     localStorage.setItem('comments', JSON.stringify(allComment) )
-    // } else {
-    //     const comments = localStorage.getItem('comments')
-    //     initialData = setAllCommentJSON.parse(comments)
-    // }
-   
-    
-    
-    console.log(allComment);
-    
-    const addComment = (e) => {
-        e.preventDefault()
+  // if (!localStorageData) {
+  //     localStorage.setItem('comments', JSON.stringify(allComment) )
+  // } else {
+  //     const comments = localStorage.getItem('comments')
+  //     initialData = setAllCommentJSON.parse(comments)
+  // }
 
-        const comment = e.target.comment.value
+  // console.log(allComment);
 
-        const comments = {
-            idVideo: id,
-            comment: ''
-        }
+  // const addComment = (e) => {
+  //     e.preventDefault()
 
-        setAllComment([...allComment, comments])
-        localStorage.setItem('comments', JSON.stringify(allComment) )
-        
-    }
+  //     const comment = e.target.comment.value
 
-    console.log(allComment);
-    
-    return (
-      <div>
-            <YouTube videoId={id} />
-            
-            {/* <form onSubmit={addComment}>
+  //     const comments = {
+  //         idVideo: id,
+  //         comment: ''
+  //     }
+
+  //     setAllComment([...allComment, comments])
+  //     localStorage.setItem('comments', JSON.stringify(allComment) )
+
+  // }
+
+  // console.log(allComment);
+
+  return (
+    <div>
+      <YouTube videoId={id} />
+
+      {/* <form onSubmit={addComment}>
                 <textarea name="comment" id="" cols="30" rows="10"></textarea>
                 <button>comment</button>
             </form> */}
-      </div>
-     
-  )
-}
+    </div>
+  );
+};
 
-export default Video
+export default Video;
